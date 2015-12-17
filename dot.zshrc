@@ -81,9 +81,9 @@ zle -N my-accept-line
 # rebind Enter, usually this is `^M'
 bindkey '^M' my-accept-line
 
-export AWS_ACCESS_KEY_ID=AKIAJCQJDYKRKK7TFC4A
-export AWS_SECRET_ACCESS_KEY=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
-export AWS_DEFAULT_REGION=eu-west-1
+ xport AWS_ACCESS_KEY_ID=AKIAJCQJDYKRKK7TFC4A
+ xport AWS_SECRET_ACCESS_KEY=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
+ xport AWS_DEFAULT_REGION=eu-west-1
 export GOPATH=~/dev/.go-path
 
 # export PATH=/home/ed/dev/.go-path/bin:$PATH
