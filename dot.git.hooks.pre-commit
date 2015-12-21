@@ -1,0 +1,13 @@
+#!/bin/sh
+
+exec 1>&2
+
+if git diff --cached HEAD | grep -i 'aws.access.key' >/dev/null ; then
+    echo WARNING commit seems to contain aws keys NOT COMMITTING
+    exit 1
+fi
+
+if git diff --cached HEAD | grep -i 'aws.secret' >/dev/null ; then
+    echo WARNING commit seems to contain aws secrets NOT COMMITTING
+    exit 2
+fi
