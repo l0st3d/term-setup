@@ -1,4 +1,4 @@
-{:user {;; :pedantic? :abort
+{:user {:pedantic? :abort
         :plugins [[cider/cider-nrepl "0.10.0" :exclusions [org.clojure/tools.nrepl]] ;; :exclusions [org.clojure/java.classpath]
                   [refactor-nrepl "2.0.0-SNAPSHOT" :exclusions [org.clojure/tools.nrepl]]]
         
