@@ -23,9 +23,6 @@
                        [alembic "0.3.2"]
                        [io.aviso/pretty "0.1.19"]
                        [im.chit/vinyasa "0.4.1"]]
-        ;; :aws {:access-key "AKIAJCQJDYKRKK7TFC4A"
-        ;;       :secret-key "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"}
-
         :injections
         [;; (require 'spyscope.core)
          (require 'leiningen.core.main)
@@ -36,8 +33,6 @@
          (require '[clojure.repl :refer :all])
          (require 'leiningen.core.main)
          (require 'alembic.still)
-
-         (def aws-creds {:access-key "AKIAJCQJDYKRKK7TFC4A" :secret-key "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" :endpoint "eu-west-1"})
 
          (defn rt []
            (run-tests 'integration-testing.core-test))
