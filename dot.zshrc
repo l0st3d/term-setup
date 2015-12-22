@@ -1,6 +1,9 @@
 setopt appendhistory autocd notify
 bindkey -e
 
+stty stop undef
+stty start undef
+
 zstyle ':completion:*:urls' local
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
