@@ -1,7 +1,9 @@
-{:user {:pedantic? :abort
+{:user {;; :pedantic? :abort
         :aws {:access-key #=(eval (System/getenv "AWS_ACCESS_KEY_ID"))
-              :secret-key #=(eval (System/getenv "AWS_SECRET_ACCESS_KEY")) :endpoint "eu-west-1"}}
- :repl {:plugins [[cider/cider-nrepl "0.10.0" :exclusions [org.clojure/tools.nrepl]]
+              :secret-key #=(eval (System/getenv "AWS_SECRET_ACCESS_KEY"))
+              :endpoint "eu-west-1"}}
+ :repl {:pedantic? :warn
+        :plugins [[cider/cider-nrepl "0.10.0" :exclusions [org.clojure/tools.nrepl]]
                   [refactor-nrepl "2.0.0-SNAPSHOT" :exclusions [org.clojure/tools.nrepl]]]
         :dependencies [[org.clojure/tools.nrepl "0.2.12"]
                        [org.clojure/tools.reader "1.0.0-alpha1"]
