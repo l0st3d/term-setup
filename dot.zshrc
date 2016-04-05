@@ -67,6 +67,7 @@ export PATH=~/bin:$PATH
 # :~/Apps/maven/bin:~/Apps/terraform/current
 # export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c'
 export EDITOR='emacsclient -nw -c'
+export BOOT_JVM_OPTIONS=" -Xmx2g -client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none -XX:-OmitStackTraceInFastThrow "
 
 [[ -s "/usr/local/bin/aws_zsh_completer.sh" ]] && source /usr/local/bin/aws_zsh_completer.sh
 
