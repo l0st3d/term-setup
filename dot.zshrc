@@ -22,8 +22,8 @@ zle -N self-insert url-quote-magic
 ## git things
 
 source ~/.zsh/zsh-git-prompt/zshrc.sh
-PROMPT='$USER@%m %B%1~%b %# '
-RPROMPT='$(git_super_status)'
+PROMPT='$USER@%m %B%1~%b $(git_super_status)%# '
+## RPROMPT='$(git_super_status)'
 
 ## end of git things
 
