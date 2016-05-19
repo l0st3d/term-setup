@@ -1,4 +1,6 @@
-setopt appendhistory autocd notify
+export HISTFILE=~/.zsh/history
+
+setopt INC_APPEND_HISTORY AUTOCD NOTIFY
 bindkey -e
 
 stty stop undef
@@ -61,6 +63,7 @@ alias gco='git checkout '
 alias ga='git add '
 alias gd='git diff --color=always '
 alias ll='ls -al'
+alias gc="git commit -m "
 
 export JAVA_HOME=/usr
 export PATH=~/bin:$PATH
@@ -89,6 +92,38 @@ bindkey '^M' my-accept-line
 export GOPATH=~/dev/.go-path
 
 # export PATH=/home/ed/dev/.go-path/bin:$PATH
+
+alias knife-live='KNIFE_ENV=intmc knife '
+
+
+## insert start time of last command
+strlen () {
+    FOO=$1
+    local zero='%([BSUbfksu]|([FB]|){*})'
+    LEN=${#${(S%%)FOO//$~zero/}}
+    echo $LEN
+}
+
+preexec () {
+    DATE=$( date +"[%H:%M:%S]" )
+    local len_right=$( strlen "$DATE" )
+    len_right=$(( $len_right+1 ))
+    local right_start=$(($COLUMNS - $len_right))
+
+    local len_cmd=$( strlen "$@" )
+    local len_prompt=$(strlen "$PROMPT" )
+    local len_left=$(($len_cmd+$len_prompt))
+
+    RDATE="\033[${right_start}C ${DATE}"
+
+    if [ $len_left -lt $right_start ]; then
+        echo -e "\033[1A${RDATE}"
+    else
+        echo -e "${RDATE}"
+    fi
+}
+
+### end
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/home/ed/.gvm/bin/gvm-init.sh" ]] && source "/home/ed/.gvm/bin/gvm-init.sh"
