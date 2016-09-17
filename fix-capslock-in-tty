@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo dumpkeys | grep 'keycode *58' | sed 's/CtrlL_Lock/Control/ig' | sudo loadkeys
