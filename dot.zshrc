@@ -1,7 +1,7 @@
 export SAVEHIST=10000
 export HISTFILE=~/.zsh/history
 
-setopt INC_APPEND_HISTORY AUTOCD NOTIFY
+setopt INC_APPEND_HISTORY AUTOCD NOTIFY extendedglob
 bindkey -e
 
 stty stop undef
