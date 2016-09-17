@@ -32,6 +32,7 @@ PROMPT='$USER@%m %B%1~%b $(git_super_status)%# '
 
 ###### emacs compatibility
 bindkey -s "^x^f" $'^aemacsclient -nw -c '
+bindkey -s "^o^f" $'^aemacsclient -nw -c '
 bindkey -s "^u^f" $'^afind . -iname "*^e*"^b^b'
 bindkey -s "^u^g" $'^agrep -rHi "^e" .^b^b^b'
 # bindkey -s "^x^b" $'^g screen -X windowlist -m ^M'
