@@ -46,4 +46,14 @@ elif [ "${emacs}" != "" -a "${terminal}" != "" ] ; then
     fi
 elif [ "${emacs}" ] ; then
     wmctrl -i -a "${emacs}"
+elif [ "${terminal}" != "" -a "${browser}" != "" ] ; then
+    if [ "${current_focused_window}" == "${terminal}" ] ; then
+        wmctrl -i -a "${browser}"
+    else
+        wmctrl -i -a "${terminal}"
+    fi
+elif [ "${terminal}" ] ; then
+    wmctrl -i -a "${terminal}"
+elif [ "${browser}" ] ; then
+    wmctrl -i -a "${browser}"
 fi
