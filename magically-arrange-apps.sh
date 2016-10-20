@@ -46,7 +46,6 @@ if [ "${emacs}" != "" -a "${terminal}" != "" -a "${browser}" != "" ] ; then
     else
         v_max_terminal=no
     fi
-    echo "${h_max_emacs}" "${v_max_emacs}" "${h_max_browser}" "${v_max_browser}" "${h_max_terminal}"  "${v_max_terminal}" 
          
     if [ "${h_max_emacs}" == "no" -a "${v_max_emacs}" == "yes" -a \
          "${h_max_browser}" == "yes" -a "${v_max_browser}" == "yes" -a \
