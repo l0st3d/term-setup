@@ -44,4 +44,6 @@ elif [ "${emacs}" != "" -a "${terminal}" != "" ] ; then
     else
         wmctrl -i -a "${emacs}"
     fi
+elif [ "${emacs}" ] ; then
+    wmctrl -i -a "${emacs}"
 fi
