@@ -66,6 +66,7 @@ alias ga='git add '
 alias gd='git diff --color=always '
 alias ll='ls -al'
 alias gc="git commit -m "
+alias git-update-all='for d in `find . -type d -name .git` ; do pushd $d/.. ; git pull ; popd ; done'
 
 export JAVA_HOME=/usr
 export PATH=~/bin:$PATH
@@ -81,6 +82,8 @@ my-accept-line () {
         echo
         if git rev-parse --git-dir > /dev/null 2>&1 ; then
             git status
+        else
+            ls -l
         fi
     fi
     zle accept-line
