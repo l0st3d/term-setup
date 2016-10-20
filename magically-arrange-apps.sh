@@ -21,13 +21,32 @@ else
     max_emacs=no
 fi
 
+if xprop -id "${emacs}" | grep _NET_WM_STATE_MAXIMIZED_VERT 2>&1 >/dev/null ; then
+    if [ "${max_emacs}" == "yes" ] ; then
+        max_status=maximumized_vert,maximumized_horiz
+    else
+        max_status=maximumized_vert
+    fi
+    for w in "${emacs}" "${terminal}" "${firefox}" ; do
+        if [ "${w}" != "" ] ; then
+            xprop -id ${w} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
+            wmctrl -i -r ${w} -b add,$max_status
+        fi
+    done
+    if [  != "" ] ; then
+        xprop -id ${emacs} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
+    fi
+    if [ "${terminal}" != "" ] ; then
+        xprop -id ${terminal} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
+        echo xprop -id ${terminal} -f _NET_WM_STATE_MAXIMIZED_VERT 32c -set _NET_WM_STATE_MAXIMIZED_VERT "0x1"
+    fi
+    if [ "${firefox}" != "" ] ; then
+        xprop -id ${browser} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
+    fi
+fi
+
 if [ "${emacs}" != "" -a "${terminal}" != "" -a "${browser}" != "" ] ; then
     if [ "${max_emacs}" == "yes" ] ; then
-        xprop -id ${emacs} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
-        xprop -id ${terminal} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
-        if [ "${browser}" == "${firefox}" ] ; then
-            xprop -id ${browser} -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"
-        fi
         if [ "${current_focused_window}" == "${emacs}" ] ; then
             wmctrl -i -a "${terminal}"
         elif [ "${current_focused_window}" == "${terminal}" ] ; then
