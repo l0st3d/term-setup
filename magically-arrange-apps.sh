@@ -18,7 +18,7 @@ else
     browser=$chrome
 fi
 
-if [ "$count_of_emacs_windows" -gt 1 ] ; then
+if [ "$count_of_emacs_windows" -gt 1 -a "${terminal}" != "" ] ; then
     if [ "${current_focused_class}" == "emacs.Emacs" ] ; then
         wmctrl -i -a "${terminal}"
     else
