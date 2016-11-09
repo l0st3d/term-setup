@@ -5,17 +5,26 @@
 current_focused_window=$(xprop -root 32x '\t$0' _NET_ACTIVE_WINDOW | cut -f 2 )
 current_desktop=$(wmctrl -d | awk '{ if ($2 == "*") { print $1 }}')
 current_desktop_windows=$(wmctrl -l -x -G | awk '{ if ( $2 == "'${current_desktop}'" ) { print $0 } }' | sort -k 5 -n)
+current_focused_class=$(echo "$current_desktop_windows" | grep '0x0*'`echo $current_focused_window | sed 's/0x//'` | awk '{ print $7 }' | tail -n1 | sed 's/0x0*/0x/')
 emacs=$(echo "$current_desktop_windows" | awk '{ if ( $7 == "emacs.Emacs" ) { print $1 } }' | tail -n1 | sed 's/0x0*/0x/')
 terminal=$(echo "$current_desktop_windows" | awk '{ if ( $7 == "gnome-terminal-server.Gnome-terminal" ) { print $1 } }' | tail -n1 | sed 's/0x0*/0x/')
 firefox=$(echo "$current_desktop_windows" | awk '{ if ( $7 == "Navigator.Firefox" ) { print $1 } }' | tail -n1 | sed 's/0x0*/0x/')
 chrome=$(echo "$current_desktop_windows" | awk '{ if ( $7 == "google-chrome.Google-chrome" ) { print $1 } }' | tail -n1 | sed 's/0x0*/0x/')
+count_of_emacs_windows=$(echo "$current_desktop_windows" | awk '{ if ( $7 == "emacs.Emacs" ) { print $1 } }' | wc -l)
+
 if [ "" != "${firefox}" ] ; then
     browser=$firefox
 else
     browser=$chrome
 fi
 
-if [ "${emacs}" != "" -a "${terminal}" != "" -a "${browser}" != "" ] ; then
+if [ "$count_of_emacs_windows" -gt 1 ] ; then
+    if [ "${current_focused_class}" == "emacs.Emacs" ] ; then
+        wmctrl -i -a "${terminal}"
+    else
+        echo "$current_desktop_windows" | awk '{ if ( $7 == "emacs.Emacs" ) { print $1 } }' | sed 's/0x0*/0x/' | xargs -i wmctrl -i -a "{}"
+    fi
+elif [ "${emacs}" != "" -a "${terminal}" != "" -a "${browser}" != "" ] ; then
     if xprop -id "${emacs}" | grep _NET_WM_STATE_MAXIMIZED_HORZ 2>&1 >/dev/null ; then
         h_max_emacs=yes
     else
