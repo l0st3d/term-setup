@@ -112,6 +112,7 @@ bindsym $mod+Alt+delete exec swaylock -i /usr/share/backgrounds/f25/default/norm
     bindsym $mod+r workspace Admin
     bindsym $mod+d workspace Chat
     bindsym $mod+m workspace Misc
+    bindsym $mod+b workspace Home
     bindsym $mod+6 workspace 6
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
@@ -125,6 +126,7 @@ bindsym $mod+Alt+delete exec swaylock -i /usr/share/backgrounds/f25/default/norm
     bindsym $mod+Alt+r move container to workspace Admin
     bindsym $mod+Alt+d move container to workspace Chat
     bindsym $mod+Alt+m move container to workspace Misc
+    bindsym $mod+Alt+b move container to workspace Home
     bindsym $mod+Alt+6 move container to workspace 6
     bindsym $mod+Alt+7 move container to workspace 7
     bindsym $mod+Alt+8 move container to workspace 8
