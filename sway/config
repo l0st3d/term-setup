@@ -215,8 +215,8 @@ bindsym XF86AudioRaiseVolume exec /usr/bin/amixer set Master 5%+ && pkill -SIGRT
 bindsym XF86AudioLowerVolume exec /usr/bin/amixer set Master 5%- && pkill -SIGRTMIN+15 i3blocks
 bindsym XF86AudioMute exec /usr/bin/amixer set Master 1+ toggle && pkill -SIGRTMIN+15 i3blocks
 
-gaps inner 2
-gaps outer 2
+gaps inner 0
+gaps outer 0
 
 new_window none
 hide_edge_borders both
