@@ -85,6 +85,7 @@ mode "control" {
 bindsym $mod+Alt+semicolon mode "control"
 
 bindsym $mod+delete exec swaylock -i /usr/share/backgrounds/f25/default/normalish/f25.png -s fill
+bindsym $mod+Alt+delete exec swaylock -i /usr/share/backgrounds/f25/default/normalish/f25.png -s fill & systemctl suspend
     
 #
 # Moving around:
