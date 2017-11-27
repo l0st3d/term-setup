@@ -54,7 +54,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' '' 
 zstyle ':completion:*' max-errors 3 numeric
 zstyle ':completion:*' prompt 'Corrections (%e errors)'
 zstyle ':completion:*' substitute 1
-zstyle :compinstall filename '/home/ed/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -93,10 +93,10 @@ zle -N my-accept-line
 # rebind Enter, usually this is `^M'
 bindkey '^M' my-accept-line
 
-[[ -f "/home/ed/.zsh/aws-credentials" ]] && source /home/ed/.zsh/aws-credentials
+[[ -f "~/.zsh/aws-credentials" ]] && source ~/.zsh/aws-credentials
 export GOPATH=~/dev/.go-path
 
-# export PATH=/home/ed/dev/.go-path/bin:$PATH
+# export PATH=~/dev/.go-path/bin:$PATH
 
 alias knife-live='KNIFE_ENV=intmc knife '
 
@@ -130,5 +130,14 @@ preexec () {
 
 ### end
 
+### pki gradle setup
+export JAVA_OPTS=" -Djavax.net.ssl.keyStore=/home/aviso/.ssh/anna_secure_external-84.p12 -Djavax.net.ssl.keyStorePassword=UkXU3eYe9x2S -Xmx8192m "
+
+export PATH=$PATH:~/.cargo/bin
+
+print -Pn "\e]0;${USER}\a"
+
+### end
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/ed/.gvm/bin/gvm-init.sh" ]] && source "/home/ed/.gvm/bin/gvm-init.sh"
+[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
